@@ -1,5 +1,25 @@
 [
   {
+    "role": "Freelance Developer",
+    "company": "FHP London",
+    "duration": "September 2025",
+    "tasks": [
+      "Developed a document processor to identify technical and grammatical accuracies in technical diligence reports",
+      "Built automated analysis tools to enhance document quality and compliance checking",
+      "Implemented advanced text processing algorithms for technical document validation"
+    ]
+  },
+  {
+    "role": "Shopify Developer",
+    "company": "The Good Fats",
+    "duration": "September 2025",
+    "tasks": [
+      "Developed and deployed a complete e-commerce website for The Good Fats ghee company",
+      "Built custom Shopify theme and integrated essential e-commerce functionality",
+      "Successfully launched the website on thegoodfats.in domain with full product catalog and payment integration"
+    ]
+  },
+  {
     "role": "Full Stack Developer",
     "company": "UrbanTap",
     "duration": "May 2025 - Present",

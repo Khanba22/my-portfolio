@@ -181,19 +181,6 @@ export default function ServiceCards({ serviceType }) {
                     </div>
                   )}
 
-                  {/* Price */}
-                  <div className="pt-3">
-                    <span
-                      className="text-lg font-semibold"
-                      style={{
-                        background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                      }}
-                    >
-                      {service.price}
-                    </span>
-                  </div>
 
                   {/* CTA Button */}
                   <div className="pt-3">
