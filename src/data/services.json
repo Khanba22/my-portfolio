@@ -113,6 +113,28 @@
         "icon": "Server",
         "price": "Starting from $1,500"
       }
+    ],
+    "automations": [
+      {
+        "title": "Business Automations",
+        "description": "Streamline your daily operations with custom automation workflows, reducing manual tasks and increasing efficiency.",
+        "features": ["Workflow Automation", "Process Optimization", "Task Scheduling", "Custom Scripts"],
+        "icon": "Server",
+        "price": "Starting from $1,500"
+      },
+      {
+        "title": "AI Automations",
+        "description": "Leverage advanced AI models to automate complex decision-making, content generation, and customer interactions.",
+        "features": ["AI Agents", "LLM Integration", "Smart Chatbots", "Predictive Systems"],
+        "icon": "Brain",
+        "price": "Starting from $2,500"
+      },
+      {
+        "title": "Marketing Automations & CRM",
+        "description": "End-to-end marketing automation, Meta integration, and custom CRM development to scale your customer outreach.",
+        "features": ["Meta Integration", "Custom CRMs", "Lead Nurturing", "Campaign Automation"],
+        "icon": "ShoppingCart",
+        "price": "Starting from $2,000"
+      }
     ]
   }
-  

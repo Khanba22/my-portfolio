@@ -1,6 +1,6 @@
-import AboutHero from "@/components/About/AboutHero";
-import Experience from "@/components/About/Experience";
-import Footer from "@/components/Footer";
+import NoirAboutHero from "@/components/ui/NoirAboutHero";
+import NoirExperience from "@/components/ui/NoirExperience";
+import NoirFooter from "@/components/ui/NoirFooter";
 import React from "react";
 
 export const metadata = {
@@ -27,18 +27,12 @@ export const metadata = {
 
 const page = () => {
   return (
-    <div className="">
-      <AboutHero />
-      <Experience />
-      <Footer />
+    <div>
+      <NoirAboutHero />
+      <NoirExperience />
+      <NoirFooter />
     </div>
   );
 };
 
 export default page;
-
-// Server Side rendering : Sari rendering server pe hogi
-
-// Event listeners : Server cant take browser events...
-
-// Basic Conclusion : Event listener hai toh use client lagega hi

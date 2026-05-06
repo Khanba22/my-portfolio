@@ -1,19 +1,15 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import "./animations.css";
-import Navbar, { HamBurgerMenu } from "@/components/Navbar";
+import NoirNavbar, { HamBurgerMenu } from "@/components/ui/NoirNavbar";
 import { ConfigProvider } from "@/contexts/ConfigContext";
 import { personStructuredData, websiteStructuredData, organizationStructuredData } from "./structured-data";
 import { Analytics } from "@vercel/analytics/next"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
 });
 
 export const metadata = {
@@ -88,27 +84,7 @@ export const metadata = {
     // yahoo: 'your-yahoo-verification-code',
   },
 };
-// Background floating orbs
-const orbs = [
-  {
-    size: "w-80 h-80",
-    position: "-top-40 -left-40",
-    delay: "0s",
-    duration: "15s",
-  },
-  {
-    size: "w-96 h-96",
-    position: "-bottom-60 -right-60",
-    delay: "2s",
-    duration: "18s",
-  },
-  {
-    size: "w-64 h-64",
-    position: "top-1/3 -right-32",
-    delay: "5s",
-    duration: "12s",
-  },
-];
+
 export default function RootLayout({ children }) {
   return (
     <html className="flex justify-center items-center" lang="en">
@@ -116,7 +92,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#0b0b0b" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <meta name="format-detection" content="telephone=no" />
         <script
@@ -131,26 +107,22 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-full lg:pt-24 container relative`}
+        className={`${inter.variable} antialiased w-full h-full lg:pt-24 container relative`}
+        style={{ backgroundColor: "#0b0b0b" }}
       >
-        {orbs.map((orb, index) => (
-          <div
-            key={index}
-            className={`absolute rounded-full opacity-10 animate-pulse-slow ${orb.position} ${orb.size}`}
-            style={{
-              background:
-                "linear-gradient(135deg, var(--gradient-end), var(--gradient-start))",
-              filter: "blur(80px)",
-              animation: `float ${orb.duration} infinite alternate-reverse`,
-              animationDelay: orb.delay,
-            }}
-          />
-        ))}
+        {/* Film grain overlay for entire page */}
+        <div
+          className="fixed inset-0 pointer-events-none z-[100] opacity-[0.02]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+            backgroundSize: "150px 150px",
+          }}
+        />
         <ConfigProvider>
           {/* Navbar */}
-          <Navbar />
+          <NoirNavbar />
           <Analytics />
-          <HamBurgerMenu/>
+          <HamBurgerMenu />
           {/* <CustomCursor /> */}
           {children}
         </ConfigProvider>

@@ -22,18 +22,16 @@ const AboutHero = () => {
 
   return (
     <div
-      className={`w-full min-h-[60vh] my-8 lg:my-16 gap-8 flex flex-col-reverse lg:flex-row p-4 sm:p-8 rounded-xl relative overflow-hidden transition-all duration-700 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
+      className={`w-full min-h-[60vh] my-8 lg:my-16 gap-8 flex flex-col-reverse lg:flex-row p-4 sm:p-8 rounded-xl relative overflow-hidden transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
 
     >
-     
+
 
       <div className="flex-1 flex flex-col justify-center h-full sm:px-8 py-6 space-y-6 relative z-10">
         <h1
-          className={`text-4xl sm:text-5xl font-bold transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-          }`}
+          className={`text-4xl sm:text-5xl font-bold transition-all duration-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+            }`}
           style={{
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -44,9 +42,8 @@ const AboutHero = () => {
         </h1>
 
         <p
-          className={`text-base sm:text-lg transition-all duration-1000 delay-100 ${
-            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-          }`}
+          className={`text-base sm:text-lg transition-all duration-1000 delay-100 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+            }`}
           style={{ color: "var(--text-color)" }}
         >
           Hi, I’m Mushan Khan, a full-stack developer with experience building scalable web applications from the ground up. I specialize in modern JavaScript frameworks like React and Node.js, and I’m passionate about creating seamless user experiences backed by solid backend architecture. I’ve worked across frontend, backend, and DevOps, and I enjoy turning complex problems into clean, efficient solutions.
@@ -54,13 +51,12 @@ const AboutHero = () => {
 
 
         <div
-          className={`md:flex w-full py-4 justify-evenly gap-4 transition-all duration-1000 delay-300 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className={`md:flex w-full py-4 justify-evenly gap-4 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
         >
           <button
             onClick={downloadResume}
-          className="flex w-full mb-4 md:mb-0 items-center justify-center gap-2 p-3 rounded-lg flex-1 font-medium transition-all duration-500 hover:scale-105 group"
+            className="flex w-full mb-4 md:mb-0 items-center justify-center gap-2 p-3 rounded-lg flex-1 font-medium transition-all duration-500 hover:scale-105 group"
             style={{
               background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
               color: "var(--foreground)",
@@ -88,9 +84,8 @@ const AboutHero = () => {
       </div>
 
       <div
-        className={`flex-1 h-full flex items-center justify-center p-4 lg:p-8 transition-all duration-1000 delay-400 ${
-          isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-        }`}
+        className={`flex-1 h-full flex items-center justify-center p-4 lg:p-8 transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+          }`}
       >
         <div
           className="relative w-full max-w-md mx-auto overflow-hidden rounded-3xl transition-all duration-500 hover:scale-105 animate-float"

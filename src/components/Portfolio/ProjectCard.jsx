@@ -17,9 +17,8 @@ const Card = ({
 
   return (
     <div
-      className={`rounded-xl overflow-hidden relative transition-all duration-500 ${className} ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
+      className={`rounded-xl overflow-hidden relative transition-all duration-500 ${className} ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
       style={{
         background: "rgba(30, 30, 30, 0.7)",
         backdropFilter: "blur(10px)",
@@ -71,9 +70,8 @@ const ProjectCard = () => {
 
       <div className="mx-auto max-w-6xl relative z-10">
         <div
-          className={`mb-16 text-center transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className={`mb-16 text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
         >
           <h2
             className="mb-2 text-sm uppercase tracking-wider font-medium"
@@ -187,7 +185,7 @@ const ProjectCard = () => {
                       }}
                     >
                       <ExternalLink className="w-4 h-4 mr-2 transition-transform duration-500 group-hover:rotate-12" />
-                      Live Demo
+                      Visit
                     </Link>
                   )}
 

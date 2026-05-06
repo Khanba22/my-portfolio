@@ -1,7 +1,7 @@
 "use client";
 
-import Hero from "@/components/Home/Hero";
+import NoirHero from "@/components/ui/NoirHero";
 
 export default function Page() {
-  return <Hero />;
+  return <NoirHero />;
 }

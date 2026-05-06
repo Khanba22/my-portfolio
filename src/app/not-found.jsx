@@ -1,167 +1,110 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Home, ArrowLeft, Search } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { Film, ArrowRight } from "lucide-react";
 
-const NotFound = () => {
+const noir = "#0b0b0b";
+const silver = "#c8c8c8";
+const silverDim = "#6a6a6a";
+const warmHighlight = "#e8d5b5";
+
+export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
-      {/* Background gradient orbs */}
+    <div
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      style={{ backgroundColor: noir }}
+    >
+      {/* Film grain */}
       <div
-        className="absolute -top-40 -left-40 w-80 h-80 rounded-full opacity-10"
+        className="absolute inset-0 pointer-events-none opacity-[0.04]"
         style={{
-          background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
-          filter: "blur(100px)",
-          animation: "float 18s 3s infinite alternate-reverse",
-        }}
-      />
-      <div
-        className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full opacity-10"
-        style={{
-          background: "linear-gradient(135deg, var(--gradient-end), var(--gradient-start))",
-          filter: "blur(120px)",
-          animation: "float 15s infinite alternate-reverse",
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundSize: "150px 150px",
         }}
       />
 
-      <div className="text-center px-4 relative z-10">
+      {/* Spotlight */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 50% 40% at 50% 40%, rgba(232,213,181,0.05) 0%, transparent 100%)",
+        }}
+      />
+
+      <div className="relative z-10 text-center px-6">
+        {/* Scene marker */}
+        <div className="flex items-center justify-center gap-4 mb-10">
+          <div className="h-px w-12" style={{ background: `linear-gradient(90deg, transparent, ${silverDim})` }} />
+          <Film size={14} style={{ color: silverDim }} />
+          <div className="h-px w-12" style={{ background: `linear-gradient(90deg, ${silverDim}, transparent)` }} />
+        </div>
+
+        <p className="text-[10px] uppercase tracking-[0.4em] mb-8" style={{ color: silverDim }}>
+          Scene Not Found
+        </p>
+
+        {/* 404 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-8"
         >
-          {/* 404 Number */}
-          <motion.h1
-            className="text-9xl md:text-[12rem] font-bold mb-4"
-            style={{
-              background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              textShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
-            }}
-            animate={{ 
-              scale: [1, 1.05, 1],
-              opacity: [0.8, 1, 0.8]
-            }}
-            transition={{ 
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+          <h1
+            className="text-[8rem] md:text-[12rem] font-light leading-none mb-4"
+            style={{ color: "rgba(200,200,200,0.06)", fontFamily: "'Georgia', serif" }}
           >
             404
-          </motion.h1>
-
-          {/* Error Message */}
-          <motion.h2
-            className="text-2xl md:text-3xl font-semibold mb-4"
-            style={{ color: "var(--card-dark-text-light)" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Page Not Found
-          </motion.h2>
-
-          <motion.p
-            className="text-lg mb-8 max-w-md mx-auto"
-            style={{ color: "var(--card-dark-text)" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            The page you're looking for doesn't exist or has been moved. 
-            Let's get you back on track!
-          </motion.p>
+          </h1>
         </motion.div>
 
-        {/* Action Buttons */}
+        <motion.h2
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-2xl md:text-3xl font-light tracking-tight mb-4"
+          style={{ color: silver, fontFamily: "'Georgia', serif" }}
+        >
+          This scene was <span className="italic" style={{ color: warmHighlight }}>cut</span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-sm max-w-md mx-auto mb-10 leading-relaxed"
+          style={{ color: silverDim }}
+        >
+          The page you're looking for didn't make the final cut. Let's get you back to the main feature.
+        </motion.p>
+
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ delay: 0.7 }}
         >
           <Link href="/">
             <motion.button
-              className="flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 group"
-              style={{
-                background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
-                color: "var(--foreground)",
-                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
-              }}
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 12px 40px rgba(0, 0, 0, 0.3)"
-              }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] flex items-center justify-center gap-3 mx-auto"
+              style={{ backgroundColor: warmHighlight, color: noir }}
             >
-              <Home size={20} />
-              <span>Go Home</span>
+              Back to Main Feature
+              <ArrowRight size={14} />
             </motion.button>
           </Link>
-
-          <motion.button
-            onClick={() => window.history.back()}
-            className="flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 group"
-            style={{
-              background: "rgba(30, 30, 30, 0.7)",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              color: "var(--card-dark-text-light)",
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
-            }}
-            whileHover={{ 
-              scale: 1.05,
-              background: "rgba(40, 40, 40, 0.8)"
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ArrowLeft size={20} />
-            <span>Go Back</span>
-          </motion.button>
         </motion.div>
 
-        {/* Search Suggestion */}
+        {/* Bottom fade */}
         <motion.div
-          className="mt-12 p-6 rounded-lg max-w-md mx-auto"
-          style={{
-            background: "rgba(30, 30, 30, 0.7)",
-            backdropFilter: "blur(10px)",
-            border: "1px solid rgba(255, 255, 255, 0.05)",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <div className="flex items-center gap-3 mb-3">
-            <Search size={20} style={{ color: "var(--gradient-start)" }} />
-            <h3 className="font-semibold" style={{ color: "var(--card-dark-text-light)" }}>
-              Looking for something specific?
-            </h3>
-          </div>
-          <p className="text-sm" style={{ color: "var(--card-dark-text)" }}>
-            Try visiting our <Link href="/portfolio" className="underline hover:no-underline" style={{ color: "var(--gradient-start)" }}>Portfolio</Link>, 
-            <Link href="/services" className="underline hover:no-underline mx-1" style={{ color: "var(--gradient-start)" }}>Services</Link>, or 
-            <Link href="/about" className="underline hover:no-underline mx-1" style={{ color: "var(--gradient-start)" }}>About</Link> pages.
-          </p>
-        </motion.div>
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.5, delay: 1 }}
+          className="mt-16 mx-auto h-px w-48"
+          style={{ background: `linear-gradient(90deg, transparent, ${silverDim}, transparent)` }}
+        />
       </div>
-
-      {/* Custom CSS for animations */}
-      <style jsx global>{`
-        @keyframes float {
-          0% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(5deg); }
-          100% { transform: translateY(20px) rotate(-5deg); }
-        }
-      `}</style>
     </div>
   );
-};
-
-export default NotFound;
+}

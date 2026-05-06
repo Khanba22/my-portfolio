@@ -1,5 +1,60 @@
 [
-    {
+  {
+    "title": "Mysa",
+    "description": "A comprehensive laundry and dry cleaning business automation platform. Features a multi-role web app, WhatsApp conversational onboarding, and driver/operator portals.",
+    "link": "https://mysacare.in",
+    "technologyUsed": [
+      "Next.js",
+      "Express.js",
+      "Prisma",
+      "WhatsApp API",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "features": [
+      "Conversational Onboarding: WhatsApp flow for inbound messaging and template-driven follow-ups.",
+      "Multi-Role Access: Separate authenticated areas for Customer, Driver, Operator, Manager, and Admin.",
+      "Business Operations: Batches API, driver collections UI, and operator queue processing.",
+      "Commercial Configuration: Catalog management, credit accounts, campaign offers, and top-ups.",
+      "Query-Driven Automation: SQL segmentation, scheduling, and notification-job tracking."
+    ],
+    "image": "/portfolio/projects/mysa.png"
+  },
+  {
+    "title": "The Good Fats",
+    "description": "An elegant e-commerce platform dedicated to selling premium fat products like ghee and cold-pressed oils. Designed with a focus on conversion and a seamless shopping experience.",
+    "link": "https://thegoodfats.in/",
+    "technologyUsed": [
+      "Next.js",
+      "React.js",
+      "Tailwind CSS",
+      "E-commerce"
+    ],
+    "features": [
+      "E-Commerce Storefront: A beautifully designed catalog for browsing premium health products.",
+      "Secure Checkout: Integrated seamless checkout process for an optimized user experience.",
+      "Product Management: Scalable backend architecture for handling inventory and order processing."
+    ],
+    "image": "/portfolio/projects/the_good_fats.png"
+  },
+  {
+    "title": "Kiorra",
+    "description": "A modern e-commerce storefront for premium health and wellness products, specializing in high-quality ghee and essential oils. Built for high performance and engaging UX.",
+    "link": "https://kiorra.in/",
+    "technologyUsed": [
+      "Next.js",
+      "React.js",
+      "Tailwind CSS",
+      "E-commerce"
+    ],
+    "features": [
+      "High-Performance UI: Fast and responsive interface for improved user retention.",
+      "E-Commerce Integration: Full shopping cart functionality with secure payment processing.",
+      "Brand Identity: Custom design reflecting the premium quality of the products."
+    ],
+    "image": "https://api.microlink.io/?url=https://kiorra.in/&screenshot=true&meta=false&embed=screenshot.url"
+  },
+  {
     "title": "No-Code Node",
     "description": "A powerful visual MongoDB schema designer and API generator. Build your backend without writing code using an intuitive interface and TypeScript support.",
     "link": "https://no-code-node-nine.vercel.app/",
@@ -23,7 +78,12 @@
     "title": "Last Take",
     "description": "Last Take is an exciting online multiplayer survival game where players face off in a round-table environment, using strategy, manipulation, and luck to survive and outlast their opponents.",
     "link": "",
-    "technologyUsed": ["React.js", "Three.js", "Socket.io", "Peer.js"],
+    "technologyUsed": [
+      "React.js",
+      "Three.js",
+      "Socket.io",
+      "Peer.js"
+    ],
     "github": "https://github.com/Khanba22/online-game",
     "features": [
       "Multiplayer Gameplay: Play with multiple players in real-time, connected via Socket.io for seamless game interactions.",
