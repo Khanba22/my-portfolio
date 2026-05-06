@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Film, ChevronDown, ChevronUp, ExternalLink, Mail, Github, Linkedin } from "lucide-react";
+import { ArrowRight, Film, ChevronDown, ChevronUp, ExternalLink, Mail, Github, Linkedin, Briefcase, MapPin } from "lucide-react";
 import { noir, silver, silverDim, warmHighlight, spotlight, FilmGrain } from "../ui/NoirTheme";
 import projects from "@/data/FeaturedProjects.json";
+import experience from "@/data/Experience.json";
 import NoirFooter from "../ui/NoirFooter";
 import Link from "next/link";
 
@@ -304,114 +305,233 @@ const NoirHeroMobile = () => {
   );
 
   return (
-    <div className="w-full flex flex-col min-h-screen relative overflow-hidden" style={{ backgroundColor: noir }}>
-      {/* Spotlight */}
-      <div className="absolute inset-0 pointer-events-none z-0" style={{ background: `radial-gradient(ellipse 80% 40% at 50% 20%, ${spotlight} 0%, transparent 70%)` }} />
+    <div className="w-full flex flex-col relative" style={{ backgroundColor: noir }}>
 
-      {/* ── 1. Header bar: Logo mark + name + role ── */}
-      <div className="relative z-10 flex items-center gap-4 px-5 pt-8 pb-5" style={{ borderBottom: "1px solid rgba(200,200,200,0.06)" }}>
-        {/* Small logo mark */}
-        <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden" style={{ border: "1px solid rgba(200,200,200,0.08)" }}>
-          <img src="/images/mk-logo.png" alt="MK" className="w-full h-full object-contain" style={{ filter: "brightness(1.05)" }} />
-          <div className="absolute top-0 left-0 right-0 h-1.5 bg-black" />
-          <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-black" />
-        </div>
-        {/* Name + role */}
-        <div className="flex flex-col">
-          <p className="text-[9px] uppercase tracking-[0.4em] mb-1" style={{ color: silverDim }}>
-            <Film size={8} className="inline mr-1" style={{ color: silverDim }} />
-            Portfolio
-          </p>
-          <h1 className="text-2xl font-light tracking-wide" style={{ color: silver, fontFamily: "'Georgia', serif" }}>
-            Mushan <span className="italic" style={{ color: warmHighlight }}>Khan</span>
-          </h1>
-          <p className="text-[10px] uppercase tracking-[0.2em] mt-0.5" style={{ color: silverDim }}>
-            Software Engineer
-          </p>
-        </div>
+      {/* ═══ SECTION 1: TITLE CARD — full screen ═══ */}
+      <div className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+        {/* Spotlight */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 70% 50% at 50% 40%, ${spotlight} 0%, transparent 70%)` }} />
+        {/* Corner accents */}
+        <div className="absolute top-6 left-6 w-8 h-8" style={{ borderTop: `1px solid rgba(200,200,200,0.1)`, borderLeft: `1px solid rgba(200,200,200,0.1)` }} />
+        <div className="absolute top-6 right-6 w-8 h-8" style={{ borderTop: `1px solid rgba(200,200,200,0.1)`, borderRight: `1px solid rgba(200,200,200,0.1)` }} />
+        <div className="absolute bottom-16 left-6 w-8 h-8" style={{ borderBottom: `1px solid rgba(200,200,200,0.1)`, borderLeft: `1px solid rgba(200,200,200,0.1)` }} />
+        <div className="absolute bottom-16 right-6 w-8 h-8" style={{ borderBottom: `1px solid rgba(200,200,200,0.1)`, borderRight: `1px solid rgba(200,200,200,0.1)` }} />
+
+        {/* Logo */}
+        <motion.img
+          src="/images/mk-logo.png"
+          alt="MK"
+          className="w-40 h-40 object-contain mb-8"
+          style={{ filter: "brightness(1.1) contrast(1.05)" }}
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          draggable={false}
+        />
+
+        {/* Name */}
+        <motion.h1
+          className="text-4xl font-light tracking-wide text-center mb-2"
+          style={{ color: silver, fontFamily: "'Georgia', serif" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+        >
+          Mushan <span className="italic" style={{ color: warmHighlight }}>Khan</span>
+        </motion.h1>
+
+        <motion.p
+          className="text-[10px] uppercase tracking-[0.4em] mb-6"
+          style={{ color: silverDim }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7 }}
+        >
+          Software Engineer & Builder
+        </motion.p>
+
+        {/* Divider */}
+        <motion.div
+          className="h-px w-16 mb-6"
+          style={{ background: `linear-gradient(90deg, transparent, ${warmHighlight}, transparent)` }}
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
+        />
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8 }}
+        >
+          <span className="text-[8px] uppercase tracking-[0.3em]" style={{ color: "rgba(200,200,200,0.2)" }}>Scroll</span>
+          <ChevronDown size={14} style={{ color: "rgba(200,200,200,0.15)" }} />
+        </motion.div>
       </div>
 
-      {/* ── 2. Typing tagline ── */}
-      <div className="relative z-10 px-5 py-6" style={{ borderBottom: "1px solid rgba(200,200,200,0.06)" }}>
-        <div className="flex items-center gap-2 mb-3">
-          <div className="h-px w-6" style={{ backgroundColor: warmHighlight }} />
-          <p className="text-[9px] uppercase tracking-[0.35em]" style={{ color: silverDim }}>Specialization</p>
+      {/* ═══ SECTION 2: THE CAST — specialization + bio + stats ═══ */}
+      <div className="relative z-10 px-5 py-10" style={{ borderTop: "1px solid rgba(200,200,200,0.06)" }}>
+        {/* Scene marker */}
+        <div className="flex items-center gap-3 mb-6">
+          <Film size={12} style={{ color: silverDim }} />
+          <p className="text-[9px] uppercase tracking-[0.4em]" style={{ color: silverDim }}>Scene I — The Cast</p>
+          <div className="h-px flex-1" style={{ backgroundColor: "rgba(200,200,200,0.06)" }} />
         </div>
-        <h2 className="text-2xl font-light leading-snug min-h-[4rem]" style={{ color: silver, fontFamily: "'Georgia', serif" }}>
+
+        {/* Typing specialization */}
+        <h2 className="text-2xl font-light leading-snug mb-5 min-h-[3.5rem]" style={{ color: silver, fontFamily: "'Georgia', serif" }}>
           {displayText}
           <span className="inline-block w-0.5 h-5 ml-1 animate-pulse align-middle" style={{ backgroundColor: warmHighlight }} />
         </h2>
-      </div>
 
-      {/* ── 3. Bio block ── */}
-      <div className="relative z-10 px-5 py-5" style={{ backgroundColor: "rgba(255,255,255,0.015)", borderBottom: "1px solid rgba(200,200,200,0.06)" }}>
-        <p className="text-sm leading-relaxed" style={{ color: silverDim, fontFamily: "'Georgia', serif", fontStyle: "italic" }}>
+        {/* Bio */}
+        <p className="text-sm leading-relaxed mb-8" style={{ color: silverDim, fontFamily: "'Georgia', serif", fontStyle: "italic" }}>
           I build production-ready systems — from high-traffic e-commerce platforms to AI automation tools — with a focus on performance, scalability, and exceptional user experience.
         </p>
+
+        {/* Stats row */}
+        <div className="grid grid-cols-3 gap-3">
+          {[
+            { value: "3+", label: "Years" },
+            { value: "15+", label: "Projects" },
+            { value: "5+", label: "Industries" },
+          ].map(({ value, label }) => (
+            <div key={label} className="flex flex-col items-center py-4" style={{ backgroundColor: "rgba(255,255,255,0.02)", border: "1px solid rgba(200,200,200,0.06)" }}>
+              <span className="text-2xl font-light" style={{ color: warmHighlight, fontFamily: "'Georgia', serif" }}>{value}</span>
+              <span className="text-[8px] uppercase tracking-[0.25em] mt-1" style={{ color: silverDim }}>{label}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* ── 4. Stats row ── */}
-      <div className="relative z-10 grid grid-cols-3 divide-x" style={{ borderBottom: "1px solid rgba(200,200,200,0.06)", borderColor: "rgba(200,200,200,0.06)" }}>
-        {[
-          { value: "3+", label: "Years Exp." },
-          { value: "15+", label: "Projects" },
-          { value: "5+", label: "Industries" },
-        ].map(({ value, label }) => (
-          <div key={label} className="flex flex-col items-center py-4 px-2" style={{ borderColor: "rgba(200,200,200,0.06)" }}>
-            <span className="text-2xl font-light" style={{ color: warmHighlight, fontFamily: "'Georgia', serif" }}>{value}</span>
-            <span className="text-[9px] uppercase tracking-[0.2em] mt-1" style={{ color: silverDim }}>{label}</span>
-          </div>
-        ))}
+      {/* ═══ SECTION 3: EXPERIENCE — horizontal scroll cards ═══ */}
+      <div className="relative z-10 py-8" style={{ borderTop: "1px solid rgba(200,200,200,0.06)" }}>
+        <div className="px-5 flex items-center gap-3 mb-5">
+          <Film size={12} style={{ color: silverDim }} />
+          <p className="text-[9px] uppercase tracking-[0.4em]" style={{ color: silverDim }}>Scene II — The Journey</p>
+          <div className="h-px flex-1" style={{ backgroundColor: "rgba(200,200,200,0.06)" }} />
+        </div>
+        <h3 className="text-xl font-light tracking-tight mb-5 px-5" style={{ color: silver, fontFamily: "'Georgia', serif" }}>
+          Work <span className="italic" style={{ color: warmHighlight }}>Experience</span>
+        </h3>
+
+        {/* Horizontal scroll */}
+        <div className="flex gap-3 overflow-x-auto pb-4 px-5 snap-x snap-mandatory" style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}>
+          {experience.slice(0, 5).map((exp, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 w-[75vw] snap-start p-5 flex flex-col justify-between"
+              style={{ backgroundColor: "rgba(255,255,255,0.02)", border: "1px solid rgba(200,200,200,0.06)", minHeight: "180px" }}
+            >
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <Briefcase size={12} style={{ color: warmHighlight }} />
+                  <span className="text-[9px] uppercase tracking-[0.3em]" style={{ color: silverDim }}>{exp.duration}</span>
+                </div>
+                <h4 className="text-base font-light mb-1" style={{ color: silver, fontFamily: "'Georgia', serif" }}>{exp.role}</h4>
+                <div className="flex items-center gap-1 mb-3">
+                  <MapPin size={10} style={{ color: warmHighlight }} />
+                  <span className="text-xs" style={{ color: warmHighlight }}>{exp.company}</span>
+                </div>
+                <p className="text-[11px] leading-relaxed" style={{ color: silverDim }}>
+                  {exp.tasks[0].substring(0, 90)}{exp.tasks[0].length > 90 ? "..." : ""}
+                </p>
+              </div>
+              <div className="h-px w-10 mt-3" style={{ background: `linear-gradient(90deg, ${warmHighlight}, transparent)` }} />
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* ── 5. Contact CTA block ── */}
-      <div
-        className="relative z-10 px-5 py-6 flex flex-col gap-4"
-        style={{ backgroundColor: "rgba(255,255,255,0.02)", borderBottom: "1px solid rgba(200,200,200,0.06)" }}
-      >
-        {/* Top accent */}
+      {/* ═══ SECTION 4: PROJECTS — visual cards ═══ */}
+      <div className="relative z-10 py-8 px-5" style={{ borderTop: "1px solid rgba(200,200,200,0.06)" }}>
+        <div className="flex items-center gap-3 mb-5">
+          <Film size={12} style={{ color: silverDim }} />
+          <p className="text-[9px] uppercase tracking-[0.4em]" style={{ color: silverDim }}>Scene III — The Reel</p>
+          <div className="h-px flex-1" style={{ backgroundColor: "rgba(200,200,200,0.06)" }} />
+        </div>
+        <h3 className="text-xl font-light tracking-tight mb-5" style={{ color: silver, fontFamily: "'Georgia', serif" }}>
+          Featured <span className="italic" style={{ color: warmHighlight }}>Projects</span>
+        </h3>
+
+        <div className="flex flex-col gap-4">
+          {projects.slice(0, 4).map((project, i) => (
+            <div key={i} className="overflow-hidden" style={{ backgroundColor: "rgba(255,255,255,0.02)", border: "1px solid rgba(200,200,200,0.06)" }}>
+              {/* Project image with letterbox */}
+              <div className="relative w-full h-44 overflow-hidden" style={{ filter: "grayscale(0.4)" }}>
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                <div className="absolute top-0 left-0 right-0 h-3 bg-black z-10" />
+                <div className="absolute bottom-0 left-0 right-0 h-3 bg-black z-10" />
+                {/* Scene number overlay */}
+                <div className="absolute top-4 left-4 z-20 px-2 py-1" style={{ backgroundColor: "rgba(11,11,11,0.7)" }}>
+                  <span className="text-[8px] uppercase tracking-[0.3em]" style={{ color: warmHighlight }}>0{i + 1}</span>
+                </div>
+              </div>
+              {/* Info */}
+              <div className="p-4">
+                <h4 className="text-lg font-light mb-2" style={{ color: silver, fontFamily: "'Georgia', serif" }}>{project.title}</h4>
+                <p className="text-xs leading-relaxed mb-3" style={{ color: silverDim }}>
+                  {project.description.substring(0, 100)}{project.description.length > 100 ? "..." : ""}
+                </p>
+                {/* Tech tags */}
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.technologyUsed.slice(0, 3).map((tech, j) => (
+                    <span key={j} className="text-[9px] uppercase tracking-[0.15em] px-2 py-1" style={{ color: silverDim, border: "1px solid rgba(200,200,200,0.08)" }}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                {project.link && (
+                  <Link href={project.link} target="_blank" rel="noopener noreferrer">
+                    <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em]" style={{ color: warmHighlight }}>
+                      <ExternalLink size={11} /> View Project
+                    </div>
+                  </Link>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ═══ SECTION 5: CONTACT + FOOTER ═══ */}
+      <div className="relative z-10 px-5 py-8" style={{ backgroundColor: "rgba(255,255,255,0.02)", borderTop: "1px solid rgba(200,200,200,0.06)" }}>
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${warmHighlight}, transparent)`, opacity: 0.25 }} />
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3 mb-5">
+          <Film size={12} style={{ color: silverDim }} />
+          <p className="text-[9px] uppercase tracking-[0.4em]" style={{ color: silverDim }}>Scene IV — The Credits</p>
+          <div className="h-px flex-1" style={{ backgroundColor: "rgba(200,200,200,0.06)" }} />
+        </div>
+
+        <div className="flex items-center justify-between mb-5">
           <div>
-            <p className="text-[9px] uppercase tracking-[0.35em] mb-1" style={{ color: silverDim }}>Ready to Build Together?</p>
-            <h3 className="text-2xl font-light" style={{ color: silver, fontFamily: "'Georgia', serif" }}>
+            <h3 className="text-2xl font-light mb-1" style={{ color: silver, fontFamily: "'Georgia', serif" }}>
               Let&rsquo;s <span className="italic" style={{ color: warmHighlight }}>Collaborate</span>
             </h3>
-            <p className="text-[10px] mt-1 tracking-wider" style={{ color: silverDim }}>
-              Available for freelance & full-time roles
-            </p>
+            <p className="text-[10px] tracking-wider" style={{ color: silverDim }}>Available for freelance & full-time</p>
           </div>
           <Link href="/contact">
-            <div
-              className="flex items-center gap-2 px-4 py-3 transition-all duration-300 active:scale-95"
-              style={{ border: `1px solid ${warmHighlight}`, color: warmHighlight }}
-            >
+            <div className="flex items-center gap-2 px-4 py-3 active:scale-95 transition-transform" style={{ border: `1px solid ${warmHighlight}`, color: warmHighlight }}>
               <Mail size={14} />
               <span className="text-[10px] uppercase tracking-[0.2em]">Contact</span>
             </div>
           </Link>
         </div>
 
-        {/* Social links row */}
-        <div className="flex items-center gap-4 pt-1">
+        <div className="flex items-center gap-4">
           <div className="h-px flex-1" style={{ backgroundColor: "rgba(200,200,200,0.06)" }} />
           <Link href="https://github.com/Khanba22" target="_blank" rel="noopener noreferrer">
-            <Github size={16} style={{ color: silverDim }} className="transition-colors duration-200 hover:text-white" />
+            <Github size={16} style={{ color: silverDim }} />
           </Link>
           <Link href="https://www.linkedin.com/in/mushan-khan-ba3a89260/" target="_blank" rel="noopener noreferrer">
-            <Linkedin size={16} style={{ color: silverDim }} className="transition-colors duration-200 hover:text-white" />
+            <Linkedin size={16} style={{ color: silverDim }} />
           </Link>
           <div className="h-px flex-1" style={{ backgroundColor: "rgba(200,200,200,0.06)" }} />
         </div>
       </div>
 
-      {/* ── 6. Featured Projects ── */}
-      <div className="relative z-10" style={{ borderBottom: "1px solid rgba(200,200,200,0.06)" }}>
-        <NoirProjectShowcase />
-      </div>
-
-      {/* ── 7. Footer ── */}
       <div className="relative z-10">
         <NoirFooter />
       </div>
