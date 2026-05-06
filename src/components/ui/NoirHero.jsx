@@ -187,7 +187,7 @@ const NoirHeroDesktop = () => {
 
   return (
     <div
-      className="min-h-screen lg:h-[85vh] flex flex-row p-2 xl:p-4 relative overflow-hidden"
+      className="lg:h-[85vh] flex flex-row p-2 xl:p-4 relative overflow-hidden"
       style={{ backgroundColor: noir }}
     >
       {/* Spotlight */}
